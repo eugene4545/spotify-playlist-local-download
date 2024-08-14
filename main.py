@@ -182,7 +182,7 @@ download_button.pack()
 stop_button = ttk.Button(frame, text="Stop Downloading", command=stop_downloading)
 stop_button.pack()
 
-# Status label
+# Status Label
 status_label = ttk.Label(frame, text="")
 status_label.pack()
 
