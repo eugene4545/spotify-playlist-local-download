@@ -1,0 +1,8 @@
+# requirements.txt if you get an error like this: ModuleNotFoundError: No module named 'requests'
+# run the command(s): pip install (module name here)
+
+pytube==11.0.1
+requests>=2.31.0
+python-dotenv==0.19.1
+spotipy>=2.19.0,<2.20.0
+tk==0.1.0
