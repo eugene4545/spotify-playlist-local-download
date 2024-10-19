@@ -1,5 +1,6 @@
 # requirements.txt if you get an error like this: ModuleNotFoundError: No module named 'requests'
 # run the command(s): pip install (module name here)
+# do not forget to install ffmpeg and add it to your machine's environment variable to avoid gettting download error 
 
 spotipy
 python-dotenv
