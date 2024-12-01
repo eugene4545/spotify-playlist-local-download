@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-# requirements.txt if you get an error like this: ModuleNotFoundError: No module named 'requests'
-# run the command(s): pip install (module name here)
-spotipy
-python-dotenv
-yt-dlp
-mutagen
-requests
-tk
-ffmpeg
-tkintertable==1.3.3
-=======
 # requirements.txt if you get an error like this: ModuleNotFoundError: No module named 'requests'
 # run the command(s): pip install (module name here)
 # do not forget to install ffmpeg and add it to your machine's environment variable to avoid gettting download error 
@@ -22,4 +10,4 @@ requests
 tk
 ffmpeg
 tkintertable==1.3.3
->>>>>>> origin/master
+
