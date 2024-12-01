@@ -67,9 +67,35 @@ def get_user_playlists(token):
     print("Retrieving user playlists...")
     headers = get_auth_header(token)
     response = requests.get("https://api.spotify.com/v1/me/playlists", headers=headers)
+    
+    # Check if the response is successful
+    if response.status_code != 200:
+        print(f"Error fetching playlists: {response.status_code}")
+        logging.error(f"Error fetching playlists: {response.status_code}")
+        return  # Exit the function if there's an error
+    
+    # Parse the JSON response
     response_json = response.json()
+
+    # Log the response for debugging
+    print(f"API Response: {response_json}")
+    logging.info(f"API Response: {response_json}")
+
+    # Ensure 'items' is present in the response
+    if "items" not in response_json:
+        print("No playlists found or the API response structure is unexpected.")
+        logging.error("No playlists found or the API response structure is unexpected.")
+        return
+
+    # Process the playlists if 'items' exists
     for item in response_json["items"]:
-        playlists[item["name"]] = item["id"]
+        # Check if item is not None and contains the necessary keys
+        if item and "name" in item and "id" in item:
+            playlists[item["name"]] = item["id"]
+        else:
+            print("Skipping invalid or incomplete playlist item.")
+            logging.warning("Skipping invalid or incomplete playlist item.")
+    
     print("Playlists retrieved successfully.")
     update_playlist_dropdown()
 
@@ -252,25 +278,19 @@ path_label.pack(pady=10)
 select_path_button = ttk.Button(frame, text="Browse", command=select_path)
 select_path_button.pack(pady=10)
 
-
 selected_playlist = StringVar()
 playlist_dropdown = ttk.OptionMenu(frame, selected_playlist, "Loading playlists...")
 playlist_dropdown.pack(pady=10)
 
-
 get_user_playlists(access_token)
-
 
 download_button = ttk.Button(frame, text="Download", command=start_download)
 download_button.pack(pady=10)
 
-
 stop_button = ttk.Button(frame, text="Stop Downloading", command=stop_downloading)
 stop_button.pack(pady=10)
 
-
 status_label = ttk.Label(frame, text="")
 status_label.pack(pady=10)
-
 
 screen.mainloop()
