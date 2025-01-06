@@ -79,7 +79,7 @@ After setup, the script will use FFmpeg to save downloaded files correctly!
    Enter the authorization code: [your_code_here]
    ```
    After entering the authorization code, the application will fetch an access token, and you will be able to download your playlists to your machine.
-5. Select the playlist you'd like to download.
+5. ### Select the playlist you'd like to download.
    ![App_playlist_select](image/Screenshot_(1342).png)
 
    
