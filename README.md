@@ -27,6 +27,74 @@ FFmpeg is a tool required by the script to process and convert Spotify audio str
    - Open a terminal or command prompt and type `ffmpeg -version`.
    - If FFmpeg is installed, you’ll see version details.
 
+## macOS/Linux:
+Install using a package manager:
+- macOS: `brew install ffmpeg`
+- Linux (Ubuntu): `sudo apt install ffmpeg`
+
+After setup, the script will use FFmpeg to save downloaded files correctly!
+
+## Installation
+1. Clone the repository:
+   ```
+   git clone https://github.com/eugene4545/spotify-playlist-local-download.git 
+   cd spotify-downloader
+   ```
+2. Install required Python packages:
+   ```
+   pip install -r requirements.txt  
+   ```
+3. Set up your Spotify API credentials:
+    - Go to the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard)
+    - Create an application and retrieve the `Client ID` and `Client Secret`.
+   
+4. Create a `.env` file in the project root and add the following variables from the data retrieved from the dashboard:
+   ```
+      CLIENT_ID="your_spotify_client_id"
+      CLIENT_SECRET="your_spotify_client_secret"
+      REDIRECT_URL="http://localhost:8888/callback"
+   ```
+# Running the application
+1. ### Run the script:
+   To run the program in VSCode, click the 'Run' button in the top right corner while viewing main.py.
+   When you run the app, it will ask you to go to a URL for authorization. Open the URL in your browser:
+   ```
+   https://accounts.spotify.com/authorize?client_id=your_spotify_client_id&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A8888%2Fcallback&scope=user-library-read+playlist-read-private+playlist-read-collaborative
+   ```
+   Also you can use the command to run the script:
+   ```
+   python main.py
+   ```
+   
+3. ### Login to Spotify and Authorize:
+   After logging into your Spotify account, you will be prompted to grant permission to the app. Once authorized, you will be redirected to a URL, and you'll see an authorization code in the URL (after code=).
+
+   Example of a successful URL:
+   ```
+   KBWN5LPQM3nRtXHYp8V-7mvZkkDJSBw4TCNR2X8ujKL9xb-MP2yFtTDwi_Nj6B4pXm1ZhPyqwNrLDDvWH7Uzsrwp4elS-xB2WJKrn5rVwgmSm197qO885KJMK74dwhbrk8gHhvSs1bY3sgRFlTfHTTzVm_NhIf6_UqCmjAy5FoAjzmxIp5WvKht906ksi42cQKhO-ni0yt9LlYnDAoiYFoK3PIROl8JwMYorl-7wjfxhpm3TPp6N5Vzjd_-iOz70Sbsuypk5OxQr
+   ```
+4. ### Enter the Authorization Code:
+   Copy the authorization code from the URL and paste it back into your terminal when prompted:
+   ```
+   Enter the authorization code: [your_code_here]
+   ```
+   After entering the authorization code, the application will fetch an access token, and you will be able to download your playlists to your machine.
+5. Select the playlist you'd like to download.
+6. The tracks will be downloaded to the specified DOWNLOAD_DIRECTORY.
+
+# Common Error
+If you encounter an error like:
+```
+Spotify OAuth setup error: No client_id. Pass it or set a SPOTIPY_CLIENT_ID environment variable.
+```
+
+Ensure that your .env file contains the correct CLIENT_ID and CLIENT_SECRET.
+
+
+
+
+
+
 
       
 
