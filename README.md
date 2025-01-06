@@ -80,7 +80,10 @@ After setup, the script will use FFmpeg to save downloaded files correctly!
    ```
    After entering the authorization code, the application will fetch an access token, and you will be able to download your playlists to your machine.
 5. Select the playlist you'd like to download.
-6. The tracks will be downloaded to the specified DOWNLOAD_DIRECTORY.
+   ![App_playlist_select](image/Screenshot_(1342).png)
+
+   
+7. The tracks will be downloaded to the specified DOWNLOAD_DIRECTORY.
 
 # Common Error
 If you encounter an error like:
